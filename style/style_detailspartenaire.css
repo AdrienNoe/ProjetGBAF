@@ -1,0 +1,103 @@
+#bloc_page
+{
+	width: 1000px;
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+header
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 0px 75px 10px 75px;
+	border-bottom: solid 1px black;
+}
+
+img
+{
+	width: 142px;
+}
+
+header ul
+{
+	list-style-type: none;
+}
+
+li a
+{
+	color: black;
+}
+
+header a
+{
+	text-decoration: none;
+}
+
+header input
+{
+	margin-top: 20px;
+}
+
+footer
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: black;
+	padding: 20px 0 20px 0;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+footer a
+{
+	color: black;
+	text-decoration: none;
+}
+
+#partner_section
+{
+	display: flex;
+	flex-direction: column;
+	border-bottom: solid 1px black;
+	margin-bottom: 10px;
+}
+
+#partner_section img
+{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+}
+
+#partner_section h2
+{
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.details
+{
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.list ul
+{
+	list-style-type: none;
+}
+
+.list ul li:before
+{
+	content: "•";
+	color: red;
+	display: inline-block;
+	width: 1em;
+	margin-left: -1em;
+}

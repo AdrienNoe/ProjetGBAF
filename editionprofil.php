@@ -12,14 +12,14 @@ catch(Exception $e)
 
 if(isset($_SESSION['id']))
 {
-	$requser = $bdd->prepare("SELECT * FROM utilisateurs WHERE id = ?");
+	$requser = $bdd->prepare("SELECT * FROM users WHERE id = ?");
 	$requser->execute(array($_SESSION['id']));
 	$user = $requser->fetch();
 
 	if(isset($_POST['newusername']) AND !empty($_POST['newusername']))
 	{
 		$newusername = htmlspecialchars($_POST['newusername']);
-		$insertusername = $bdd->prepare("UPDATE utilisateurs SET username = ? WHERE id = ?");
+		$insertusername = $bdd->prepare("UPDATE users SET username = ? WHERE id = ?");
 		$insertusername->execute(array($newusername, $_SESSION['id']));
 		header('Location: profil.php?id='.$_SESSION['id']);
 	}
@@ -31,7 +31,7 @@ if(isset($_SESSION['id']))
 
 		if($password == $password2)
 		{
-			$insertpassword = $bdd->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
+			$insertpassword = $bdd->prepare("UPDATE users SET password = ? WHERE id = ?");
 			$insertpassword->execute(array($password, $_SESSION['id']));
 			header('Location: profil.php?id='.$_SESSION['id']);
 		}
@@ -41,19 +41,19 @@ if(isset($_SESSION['id']))
 		}
 	}
 
-	if(isset($_POST['newquestion_secrete']) AND !empty($_POST['newquestion_secrete']))
+	if(isset($_POST['newsecret_question']) AND !empty($_POST['newsecret_question']))
 	{
-		$newquestion_secrete = htmlspecialchars($_POST['newquestion_secrete']);
-		$insertquestion_secrete = $bdd->prepare("UPDATE utilisateurs SET question_secrete = ? WHERE id = ?");
-		$insertquestion_secrete->execute(array($newquestion_secrete, $_SESSION['id']));
+		$newsecret_question = htmlspecialchars($_POST['newsecret_question']);
+		$insertsecret_question = $bdd->prepare("UPDATE users SET secret_question = ? WHERE id = ?");
+		$insertsecret_question->execute(array($newsecret_question, $_SESSION['id']));
 		header('Location: profil.php?id='.$_SESSION['id']);
 	}
 
-	if(isset($_POST['newreponse_secrete']) AND !empty($_POST['newreponse_secrete']))
+	if(isset($_POST['newsecret_answer']) AND !empty($_POST['newsecret_answer']))
 	{
-		$newreponse_secrete = htmlspecialchars($_POST['newreponse_secrete']);
-		$insertreponse_secrete = $bdd->prepare("UPDATE utilisateurs SET reponse_secrete = ? WHERE id = ?");
-		$insertreponse_secrete->execute(array($newreponse_secrete, $_SESSION['id']));
+		$newsecret_answer = htmlspecialchars($_POST['newsecret_answer']);
+		$insertsecret_answer = $bdd->prepare("UPDATE users SET secret_answer = ? WHERE id = ?");
+		$insertsecret_answer->execute(array($newsecret_answer, $_SESSION['id']));
 		header('Location: profil.php?id='.$_SESSION['id']);
 	}
 
@@ -64,7 +64,7 @@ if(isset($_SESSION['id']))
 	<head>
 		<meta charset="utf-8">
 		<title>GBAF | Paramètres du compte</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="style/style.css">
 		<link rel="icon" type="image/png" href="images/logo_gbaf.png">
 	</head>
 	<body>
@@ -80,21 +80,21 @@ if(isset($_SESSION['id']))
 					<div id="form">
 						<h3>Edition du profil</h3>
 						<form method="POST" action="">
-							<p><label for="newusername">Nouveau nom d'utilisateur: </label><br />
-								<input type="text" name="newusername" id="newusername" placeholder="Votre nouveau nom d'utilisateur...">
-							</p>
-							<p><label for="newpassword">Nouveau mot de passe: </label><br />
-								<input type="password" name="newpassword" id="newpassword" placeholder="Votre nouveau mot de passe...">
-							</p>
-							<p><label for="newpassword2">Confirmation du mot de passe: </label><br />
-								<input type="password" name="newpassword2" id="newpassword2" placeholder="Confirmez votre nouveau mot de passe...">
-							</p>
-							<p><label for="newquestion_secrete">Nouvelle question secrète: </label><br />
-								<input type="text" name="newquestion_secrete" id="newquestion_secrete" placeholder="Votre nouvelle question secrète...">
-							</p>
-							<p><label for="newreponse_secrete">Nouvelle réponse à la question secrète: </label><br />
-								<input type="text" name="newreponse_secrete" id="newreponse_secrete" placeholder="La réponse à votre nouvelle question secrète...">
-							</p>
+							<label for="newusername">Nouveau nom d'utilisateur: </label><br />
+							<input type="text" name="newusername" id="newusername" placeholder="Votre nouveau nom d'utilisateur..."><br />
+							
+							<label for="newpassword">Nouveau mot de passe: </label><br />
+							<input type="password" name="newpassword" id="newpassword" placeholder="Votre nouveau mot de passe..."><br />
+							
+							<label for="newpassword2">Confirmation du mot de passe: </label><br />
+							<input type="password" name="newpassword2" id="newpassword2" placeholder="Confirmez votre nouveau mot de passe..."><br />
+							
+							<label for="newsecret_question">Nouvelle question secrète: </label><br />
+							<input type="text" name="newsecret_question" id="newsecret_question" placeholder="Votre nouvelle question secrète..."><br />
+							
+							<label for="newsecret_answer">Nouvelle réponse à la question secrète: </label><br />
+							<input type="text" name="newsecret_answer" id="newsecret_answer" placeholder="La réponse à votre nouvelle question secrète..."><br />
+							
 							<input type="submit" name="formconnexion" value="Mettre à jour">
 						</form>
 						<?php

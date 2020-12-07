@@ -1,0 +1,196 @@
+#bloc_page
+{
+	width: 1000px;
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+header
+{
+	border-bottom: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+img
+{
+	width: 142px;
+}
+
+header h1
+{
+	font-size: 24px;
+}
+
+section
+{
+	background-color: #F7F1EE;
+	margin: 50px 50px 50px 50px;
+	padding: 10px 17px 10px 10px;
+	box-shadow: 0px 0px 10px 3px #C1C1C1;
+}
+
+label
+{
+	font-weight: bold;
+}
+
+section h3
+{
+	text-align: center;
+	font-family: Helvetica;
+	text-decoration: underline;
+	text-decoration-color: #FC0000;
+}
+
+.edit a
+{
+	text-align: center;
+	display: block;
+	text-decoration: none;
+	font-weight: normal;
+	color: #FC0000;
+}
+
+#form
+{
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+#name
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#firstname
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#username
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#password
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#password2
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#secret_question
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#secret_answer
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.subscribe
+{
+	text-decoration: none;
+	font-weight: normal;
+	color: #FC0000;
+}
+
+.create
+{
+	text-decoration: none;
+	font-weight: normal;
+	color: #FC0000;
+}
+
+#usernameconnect
+{
+	margin-bottom: 10px;
+}
+
+#passwordconnect
+{
+	margin-bottom: 10px;
+}
+
+footer
+{
+	display: flex;
+	justify-content: center;
+	color: black;
+	padding: 20px 0 20px 0;
+	border-top: 1px solid black;
+}
+
+footer a
+{
+	color: black;
+	text-decoration: none;
+}
+
+#newusername
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#newpassword
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#newpassword2
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#newsecret_question
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#newsecret_answer
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#usernamepasschange
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#secretanswerpasschange
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#password1change
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#password2change
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
