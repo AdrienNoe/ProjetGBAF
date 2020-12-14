@@ -13,6 +13,32 @@ catch(Exception $e)
 
 if(isset($_GET['id_partners']) AND !empty($_GET['id_partners']))
 {
+   $get_id = htmlspecialchars($_GET['id_partners']);
+   $article = $bdd->prepare('SELECT * FROM partners WHERE id = ?');
+   $article->execute(array($get_id));
+   if($article->rowCount() == 1)
+   {
+      $article = $article->fetch();
+      $id = $article['id'];
+      $name = $article['name'];
+      $likes = $bdd->prepare('SELECT id FROM likes WHERE id_article = ?');
+      $likes->execute(array($id));
+      $likes = $likes->rowCount();
+      $dislikes = $bdd->prepare('SELECT id FROM dislikes WHERE id_article = ?');
+      $dislikes->execute(array($id));
+      $dislikes = $dislikes->rowCount();
+   } else
+   {
+      die('Cet article n\'existe pas !');
+   }
+}
+else
+{
+   die('Erreur.');
+}
+
+if(isset($_GET['id_partners']) AND !empty($_GET['id_partners']))
+{
     $getid = htmlspecialchars($_GET['id_partners']);
     $billet = $bdd->prepare('SELECT * FROM partners WHERE id = ?');
     $billet->execute(array($getid));
@@ -20,20 +46,14 @@ if(isset($_GET['id_partners']) AND !empty($_GET['id_partners']))
 
     if(isset($_POST['submit_comment']))
     {
-        if(isset($_POST['pseudo'], $_POST['commentaire']) AND !empty($_POST['pseudo']) AND !empty($_POST['commentaire']))
+        if(isset($_POST['firstname'], $_POST['comment']) AND !empty($_POST['firstname']) AND !empty($_POST['comment']))
         {
-            $pseudo = htmlspecialchars($_POST['pseudo']);
-            $commentaire = htmlspecialchars($_POST['commentaire']);
-            if(strlen($pseudo) < 25)
-            {
-                $ins=$bdd->prepare('INSERT INTO comments (firstname, comment, id_partner, comment_date) VALUES (?,?,?,NOW())');
-                $ins->execute(array($pseudo, $commentaire, $getid));
-                $c_msg = "Votre commentaire a bien été posté !";
-            }
-            else
-            {
-                $c_msg = "Le pseudo doit faire moins de 25 caractères !";
-            }
+            $firstname = htmlspecialchars($_POST['firstname']);
+            $comment = htmlspecialchars($_POST['comment']);
+            
+            $ins=$bdd->prepare('INSERT INTO comments (firstname, comment, id_partner, comment_date) VALUES (?,?,?,NOW())');
+            $ins->execute(array($firstname, $comment, $getid));
+            $c_msg = "Votre commentaire a bien été posté !";
         }
         else
         {
@@ -92,12 +112,22 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 			</div>
 
 			<div id="comments_section">
-		    <h2>Poster un commentaire</h2>
-		         <form method="POST" action="">
-		            <input type="text" name="pseudo" placeholder="Votre prénom"><br />
-		            <textarea name="commentaire" placeholder="Votre commentaire"></textarea><br />
-		            <input type="submit" value="Poster mon commentaire" name="submit_comment">
-		        </form>
+		    	<div class="rating">
+		    		<div class="title_comments">
+		    			<h2>Poster un commentaire</h2>
+		    		</div>
+			    	<div class="likes_dislikes">
+				    	<a href="action.php?t=1&id=<?= $id ?>">J'aime (<?= $likes ?>)</a><br />
+		   				<a href="action.php?t=2&id=<?= $id ?>">Je n'aime pas (<?= $dislikes ?>)</a>
+		   			</div>
+		   			<div class="comments_form">
+				        <form method="POST" action="">
+				            <input type="text" name="firstname" placeholder="Votre prénom"><br />
+				            <textarea class="comment_area" name="comment" placeholder="Votre commentaire"></textarea><br />
+				            <input type="submit" value="Poster mon commentaire" name="submit_comment">
+				        </form>
+				    </div>
+				</div>
 		        <?php 
 		            if(isset($c_msg))
 		            {
@@ -109,10 +139,10 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 		            while($c = $commentaires->fetch())
 		            {
 		                ?>
-		                <div class="commentaires">
-		                    <p class="auteur"><b><?= $c['firstname'] ?></b></p>
-		                    <p class="date_com">Posté le : <?= $c['comment_date'] ?></p>
-		                    <p class="commentaire"><?= $c['comment']; ?></p>
+		                <div class="comments_list">
+		                    <p class="firstname"><b><?= $c['firstname'] ?></b></p>
+		                    <p class="comment_date">Posté le : <?= $c['comment_date'] ?></p>
+		                    <p class="comment"><?= $c['comment']; ?></p>
 		                </div>
 		                <?php
 		            }

@@ -56,30 +56,26 @@ if(isset($_POST['formconnexion']))
 					<h1>Le Groupement Banque-Assurance Français.</h1>
 			</header>
 			<section>
-				<!-- <div align="center"> -->
-					<div id="form">
-						<h3>Connexion</h3>
-						<form method="POST" action="">
-							<div>
-							<label for="usernameconnect">Nom d'utilisateur: </label><br />
-							<input type="text" name="usernameconnect" id="usernameconnect" placeholder="Votre nom d'utilisateur...">
-							</div>
-							<div>
-							<label for="passwordconnect">Mot de passe: </label><br />
-							<input type="password" name="passwordconnect" id="passwordconnect" placeholder="Votre mot de passe...">
-							</div>
-							<input type="submit" name="formconnexion" value="Se connecter">
-						</form>
-						<p>Pas encore inscrit ? <a class="subscribe" href="inscription.php">S'inscrire</a></p>
-						<p>Mot de passe oublié ? <a class="create" href="recuperation1.php">Créer un nouveau mot de passe</a></p>
-					</div>	
-					<?php
-					if (isset($erreur))
-					{
-						echo $erreur;
-					}
-					?>
-				<!-- </div> -->
+				<div id="form">
+					<h3>Connexion</h3>
+					<form method="POST" action="">
+						<label for="usernameconnect">Nom d'utilisateur: </label><br />
+						<input type="text" name="usernameconnect" id="usernameconnect" placeholder="Votre nom d'utilisateur..."><br />
+
+						<label for="passwordconnect">Mot de passe: </label><br />
+						<input type="password" name="passwordconnect" id="passwordconnect" placeholder="Votre mot de passe..."><br />
+
+						<input type="submit" name="formconnexion" value="Se connecter">
+					</form>
+					<p>Pas encore inscrit ? <a class="subscribe" href="inscription.php">S'inscrire</a></p>
+					<p>Mot de passe oublié ? <a class="create" href="recuperation1.php">Créer un nouveau mot de passe</a></p>
+				</div>	
+				<?php
+				if (isset($erreur))
+				{
+					echo $erreur;
+				}
+				?>
 			</section>
 			<footer>
 				<p>| <a href="#">Mentions légales</a> | <a href="#">Contact</a> |</p>

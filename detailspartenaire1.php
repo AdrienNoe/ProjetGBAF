@@ -11,11 +11,13 @@ catch(Exception $e)
         die('Erreur : '.$e->getMessage());
 }
 
-if(isset($_GET['id_partners']) AND !empty($_GET['id_partners'])) {
+if(isset($_GET['id_partners']) AND !empty($_GET['id_partners']))
+{
    $get_id = htmlspecialchars($_GET['id_partners']);
    $article = $bdd->prepare('SELECT * FROM partners WHERE id = ?');
    $article->execute(array($get_id));
-   if($article->rowCount() == 1) {
+   if($article->rowCount() == 1)
+   {
       $article = $article->fetch();
       $id = $article['id'];
       $name = $article['name'];
@@ -25,10 +27,13 @@ if(isset($_GET['id_partners']) AND !empty($_GET['id_partners'])) {
       $dislikes = $bdd->prepare('SELECT id FROM dislikes WHERE id_article = ?');
       $dislikes->execute(array($id));
       $dislikes = $dislikes->rowCount();
-   } else {
+   } else
+   {
       die('Cet article n\'existe pas !');
    }
-} else {
+}
+else
+{
    die('Erreur.');
 }
 
@@ -131,7 +136,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 		   			<div class="comments_form">
 				        <form method="POST" action="">
 				            <input type="text" name="firstname" placeholder="Votre prénom"><br />
-				            <textarea class="comment" name="comment" placeholder="Votre commentaire"></textarea><br />
+				            <textarea class="comment_area" name="comment" placeholder="Votre commentaire"></textarea><br />
 				            <input type="submit" value="Poster mon commentaire" name="submit_comment">
 				        </form>
 				    </div>
@@ -148,9 +153,9 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 		            {
 		                ?>
 		                <div class="comments_list">
-		                    <p class="auteur"><b><?= $c['firstname'] ?></b></p>
-		                    <p class="date_com">Posté le : <?= $c['comment_date'] ?></p>
-		                    <p class="commentaire"><?= $c['comment']; ?></p>
+		                    <p class="firstname"><b><?= $c['firstname'] ?></b></p>
+		                    <p class="comment_date">Posté le : <?= $c['comment_date'] ?></p>
+		                    <p class="comment"><?= $c['comment']; ?></p>
 		                </div>
 		                <?php
 		            }

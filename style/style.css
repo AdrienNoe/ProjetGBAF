@@ -102,6 +102,18 @@ section h3
 	margin-bottom: 10px;
 }
 
+#usernameconnect
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#passwordconnect
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
 .subscribe
 {
 	text-decoration: none;
