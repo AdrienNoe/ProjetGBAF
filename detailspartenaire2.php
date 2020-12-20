@@ -74,11 +74,14 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
-		<meta charset="utf-8">
+		<meta charset="UTF-8">
 		<title>GBAF | Protectpeople</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="style/style_detailspartenaire.css">
+		<link rel="stylesheet" media="screen and (max-width: 812px)" type="text/css" href="style/smartphone_details.css">
+		<link rel="stylesheet" media="screen and (min-width: 813px) and (max-width: 1366px)" type="text/css" href="style/tablette_details.css">
 		<link rel="icon" type="image/png" href="images/logo_gbaf.png">
 	</head>
 	<body>
@@ -92,10 +95,8 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 			{
 			?>
 				<div class="edit">
-					<ul>
-						<li><a href="profil.php?id=<?php echo $_SESSION['id'];?>"><?php echo$userinfo['firstname']?> <?php echo$userinfo['name']?></a></li>
-						<li><a href="deconnexion.php"><input type="button" name="disconnect" value="Se déconnecter"></a></li>
-					</ul>
+					<p><a href="profil.php?id=<?php echo $_SESSION['id'];?>"><?php echo$userinfo['firstname']?> <?php echo$userinfo['name']?></a></p>
+					<p><a href="deconnexion.php"><input type="button" name="disconnect" value="Se déconnecter"></a></p>
 				</div>
 			<?php
 			}
@@ -124,22 +125,21 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 			</div>
 
 			<div id="comments_section">
-				<div class="rating">
 					<div class="title_comments">
 		    			<h2>Poster un commentaire</h2>
 		    		</div>
-		    		<div class="likes_dislikes">
-				    	<a href="action.php?t=1&id=<?= $id ?>">J'aime</a> (<?= $likes ?>)
-		   				<br />
-		   				<a href="action.php?t=2&id=<?= $id ?>">Je n'aime pas</a> (<?= $dislikes ?>)
-		   			</div>
-		   			<div class="comments_form">
-				        <form method="POST" action="">
-				            <input type="text" name="pseudo" placeholder="Votre prénom"><br />
-				            <textarea class="comment_area" name="comment" placeholder="Votre commentaire"></textarea><br />
-				            <input type="submit" value="Poster mon commentaire" name="submit_comment">
-				        </form>
-				    </div>
+		    		<div class="rating">
+		    			<div class="comments_form">
+					        <form method="POST" action="#">
+					            <input type="text" name="pseudo" placeholder="Votre prénom"><br />
+					            <textarea class="comment_area" name="comment" placeholder="Votre commentaire"></textarea><br />
+					            <input type="submit" value="Poster mon commentaire" name="submit_comment">
+					        </form>
+				    	</div>
+			    		<div class="likes_dislikes">
+					    	<a href="action.php?t=1&id=<?= $id ?>">J'aime</a> (<?= $likes ?>)
+			   				<a href="action.php?t=2&id=<?= $id ?>">Je n'aime pas</a> (<?= $dislikes ?>)
+			   			</div>
 			    </div>
 		        <?php 
 		            if(isset($c_msg))

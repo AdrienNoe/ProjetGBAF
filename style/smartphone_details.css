@@ -1,0 +1,159 @@
+@media all and (max-width: 812px)
+{
+	#bloc_page
+	{
+		width: auto;
+	}
+
+	header
+	{
+		display: flex;
+		flex-direction: column;
+	}
+
+	header img
+	{
+		display: flex;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	header ul
+	{
+		text-align: justify;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.edit
+	{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.edit p
+	{
+		margin-left: auto;
+		margin-right: auto;
+		justify-content: flex-start;
+		margin-top: 0px;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+
+	#partner_section
+	{
+		display: flex;
+		flex-direction: column;
+		padding-left: 15px;
+		padding-right: 15px;
+		padding-top: 0px;
+		padding-bottom: 0px;
+	}
+
+	#partner_section img
+	{
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 10px;
+	}
+
+	#partner_section h2
+	{
+		text-decoration: underline;
+		text-decoration-color: red;
+		text-align: left;
+	}
+
+	.details
+	{
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.list
+	{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.list ul
+	{
+		margin-left: 75px;
+		margin-right: 75px;
+		list-style-type: none;
+		text-align: left;
+	}
+
+	.list ul li:before
+	{
+		content: "•";
+		color: red;
+		display: inline-block;
+		width: 1em;
+		margin-left: -1em;
+	}
+
+	#comments_section
+	{
+		text-align: left;
+		padding-left: 15px;
+		padding-right: 15px;
+		padding-top: 0px;
+	}
+
+	#comments_section h2
+	{
+		text-align: left;
+	}
+
+	.rating
+	{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.likes_dislikes
+	{
+		display: flex;
+		border: 1px solid grey;
+		border-radius: 5px;
+		margin-right: auto;
+		margin-left: auto;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	.comments_form
+	{
+		display: flex;
+		justify-content: flex-start;
+		align-self: center;
+	}
+
+	.comment_area
+	{
+		resize: none;
+		width: 300px;
+		height: 86px;
+	}
+
+	.comments_list
+	{
+		border: 1px solid grey;
+		border-radius: 10px;
+		padding-left: 20px;
+		height: 125px;
+		margin-bottom: 10px;
+	}
+}

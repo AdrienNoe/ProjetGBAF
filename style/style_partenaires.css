@@ -11,7 +11,7 @@ header
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	padding: 0px 75px 10px 75px;
+	padding: 0px 75px 0px 75px;
 	border-bottom: solid 1px black;
 }
 
@@ -19,11 +19,6 @@ img
 {
 	display: flex;
 	width: 142px;
-}
-
-header ul
-{
-	list-style-type: none;
 }
 
 li a
@@ -34,11 +29,6 @@ li a
 header a
 {
 	text-decoration: none;
-}
-
-header input
-{
-	margin-top: 20px;
 }
 
 footer
@@ -61,27 +51,42 @@ footer a
 .edit
 {
 	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.edit p
+{
+	margin-top: 0px;
+	margin-bottom: 10px;
+	text-align: left;
+}
+
+section
+{
+	border-bottom: solid 1px black;
 }
 
 #presentation_section
 {
 	display: flex;
 	flex-direction: column;
-	border-bottom: solid 1px black;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 #presentation_section h1
 {
 	display: flex;
-	margin-left: auto;
-	margin-right: auto;
+	text-align: left;
 }
 
 h1 + p
 {
 	display: flex;
-	margin-left: auto;
-	margin-right: auto;
+	text-align: left;
 }
 
 .list
@@ -123,7 +128,6 @@ h1 + p
 	margin-right: auto;
 	width: 325px;
 	height: 217px;
-	padding-bottom: 10px;
 }
 
 #partners_section
@@ -131,7 +135,9 @@ h1 + p
 	/*margin-left: 550px;
 	margin-right: 550px;*/
 	text-align: left;
-	border-bottom: solid 1px black;
+	border-top: solid 1px black;
+	padding-left: 100px;
+	padding-right: 100px;
 }
 
 .partners_list
@@ -142,7 +148,7 @@ h1 + p
 	border-right: 1px solid black;
 	border-bottom: 1px solid black;
 	border-left: 1px solid black;
-	margin-bottom: 10px;
+	margin-bottom: 40px;
 }
 
 .first_partner

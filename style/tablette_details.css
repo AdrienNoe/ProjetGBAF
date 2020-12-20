@@ -1,0 +1,155 @@
+@media all and (min-width: 813px) and (max-width: 1366px)
+{
+	#bloc_page
+	{
+		width: auto;
+	}
+
+	header
+	{
+		display: flex;
+		flex-direction: row;
+	}
+
+	header img
+	{
+		display: flex;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	header ul
+	{
+		text-align: justify;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.edit
+	{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.edit p
+	{
+		margin-top: 0px;
+		margin-bottom: 10px;
+		text-align: left;
+	}
+
+	#partner_section
+	{
+		display: flex;
+		flex-direction: column;
+		padding-left: 15px;
+		padding-right: 15px;
+		padding-top: 0px;
+		padding-bottom: 0px;
+	}
+
+	#partner_section img
+	{
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 10px;
+	}
+
+	#partner_section h2
+	{
+		text-decoration: underline;
+		text-decoration-color: red;
+		text-align: left;
+	}
+
+	.details
+	{
+		display: flex;
+		flex-direction: column;
+		text-align: left;
+	}
+
+	.list
+	{
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		text-align: left;
+	}
+
+	.list ul
+	{
+		list-style-type: none;
+	}
+
+	.list ul li:before
+	{
+		content: "•";
+		color: red;
+		display: inline-block;
+		width: 1em;
+		margin-left: -1em;
+	}
+
+	#comments_section
+	{
+		display: flex;
+		flex-direction: column;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	.rating
+	{
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+	}
+
+	.title_comments
+	{
+		display: flex;
+		align-self: start;
+	}
+
+	.likes_dislikes
+	{
+		display: flex;
+		border: 1px solid grey;
+		border-radius: 5px;
+		margin-right: auto;
+		margin-left: auto;
+		margin-top: 50px;
+		margin-bottom: 55px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	.comments_form
+	{
+		display: flex;
+		justify-content: flex-start;
+		align-self: center;
+		margin-left: 50px;
+		margin-bottom: 20px;
+	}
+
+	.comment_area
+	{
+		resize: none;
+		width: 350px;
+		height: 86px;
+	}
+
+	.comments_list
+	{
+		border: 1px solid grey;
+		border-radius: 10px;
+		padding-left: 20px;
+		height: 125px;
+		margin-bottom: 10px;
+	}
+}

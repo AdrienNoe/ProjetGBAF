@@ -40,9 +40,9 @@ if(isset($_POST['formconnexion']))
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
-		<meta charset="utf-8">
+		<meta charset="UTF-8">
 		<title>GBAF | Connexion</title>
 		<link rel="stylesheet" type="text/css" href="style/style.css">
 		<link rel="icon" type="image/png" href="images/logo_gbaf.png">
@@ -58,7 +58,7 @@ if(isset($_POST['formconnexion']))
 			<section>
 				<div id="form">
 					<h3>Connexion</h3>
-					<form method="POST" action="">
+					<form method="POST" action="#">
 						<label for="usernameconnect">Nom d'utilisateur: </label><br />
 						<input type="text" name="usernameconnect" id="usernameconnect" placeholder="Votre nom d'utilisateur..."><br />
 

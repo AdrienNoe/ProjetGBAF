@@ -21,7 +21,7 @@ if(isset($_GET['id_partners']) AND !empty($_GET['id_partners']))
       $article = $article->fetch();
       $id = $article['id'];
       $name = $article['name'];
-      $likes = $bdd->prepare('SELECT id FROM likes WHERE id_article = ?');
+      $likes = $bdd->prepare('SELECT id FROM likes WHERE id_article = ?'); //prepare protège les injections SQL
       $likes->execute(array($id));
       $likes = $likes->rowCount();
       $dislikes = $bdd->prepare('SELECT id FROM dislikes WHERE id_article = ?');
@@ -74,11 +74,14 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
-		<meta charset="utf-8">
+		<meta charset="UTF-8">
 		<title>GBAF | Formation&co</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="style/style_detailspartenaire.css">
+		<link rel="stylesheet" media="screen and (max-width: 812px)" type="text/css" href="style/smartphone_details.css">
+		<link rel="stylesheet" media="screen and (min-width: 813px) and (max-width: 1366px)" type="text/css" href="style/tablette_details.css">
 		<link rel="icon" type="image/png" href="images/logo_gbaf.png">
 	</head>
 	<body>
@@ -92,10 +95,8 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 			{
 			?>
 				<div class="edit">
-					<ul>
-						<li><a href="profil.php?id=<?php echo $_SESSION['id'];?>"><?php echo$userinfo['firstname']?> <?php echo$userinfo['name']?></a></li>
-						<li><a href="deconnexion.php"><input type="button" name="disconnect" value="Se déconnecter"></a></li>
-					</ul>
+					<p><a href="profil.php?id=<?php echo $_SESSION['id'];?>"><?php echo$userinfo['firstname']?> <?php echo$userinfo['name']?></a></p>
+					<p><a href="deconnexion.php"><input type="button" name="disconnect" value="Se déconnecter"></a></p>
 				</div>
 			<?php
 			}
@@ -125,21 +126,21 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 			</div>
 
 			<div id="comments_section">
+				<div class="title_comments">
+		    		<h2>Poster un commentaire</h2>
+		    	</div>
 		    	<div class="rating">
-		    		<div class="title_comments">
-		    			<h2>Poster un commentaire</h2>
-		    		</div>
-			    	<div class="likes_dislikes">
-				    	<a href="action.php?t=1&id=<?= $id ?>">J'aime (<?= $likes ?>)</a><br />
-		   				<a href="action.php?t=2&id=<?= $id ?>">Je n'aime pas (<?= $dislikes ?>)</a>
-		   			</div>
 		   			<div class="comments_form">
-				        <form method="POST" action="">
+				        <form method="POST" action="#">
 				            <input type="text" name="firstname" placeholder="Votre prénom"><br />
 				            <textarea class="comment_area" name="comment" placeholder="Votre commentaire"></textarea><br />
 				            <input type="submit" value="Poster mon commentaire" name="submit_comment">
 				        </form>
 				    </div>
+				    <div class="likes_dislikes">
+				    	<a href="action.php?t=1&id=<?= $id ?>">J'aime (<?= $likes ?>)</a><br />
+		   				<a href="action.php?t=2&id=<?= $id ?>">Je n'aime pas (<?= $dislikes ?>)</a>
+		   			</div>
 				</div>
 		        <?php 
 		            if(isset($c_msg))
@@ -147,7 +148,6 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 		                echo $c_msg;
 		            }
 		        ?>
-		        <br />
 		        <?php
 		            while($c = $commentaires->fetch())
 		            {
