@@ -21,32 +21,31 @@ if(isset($_GET['t'],$_GET['id']) AND !empty($_GET['t']) AND !empty($_GET['id']))
    $check->execute(array($getid));
    if($check->rowCount() == 1) {
       if($gett == 1) {
-         $check_like = $bdd->prepare('SELECT id FROM likes WHERE id_article = ? AND id_membre = ?');
+         $check_like = $bdd->prepare('SELECT id FROM likes WHERE id_partner = ? AND id_user = ?');
          $check_like->execute(array($getid,$sessionid));
-         $del = $bdd->prepare('DELETE FROM dislikes WHERE id_article = ? AND id_membre = ?');
+         $del = $bdd->prepare('DELETE FROM dislikes WHERE id_partner = ? AND id_user = ?');
          $del->execute(array($getid,$sessionid));
          if($check_like->rowCount() == 1) {
-            $del = $bdd->prepare('DELETE FROM likes WHERE id_article = ? AND id_membre = ?');
+            $del = $bdd->prepare('DELETE FROM likes WHERE id_partner = ? AND id_user = ?');
             $del->execute(array($getid,$sessionid));
          } else {
-            $ins = $bdd->prepare('INSERT INTO likes (id_article, id_membre) VALUES (?, ?)');
+            $ins = $bdd->prepare('INSERT INTO likes (id_partner, id_user) VALUES (?, ?)');
             $ins->execute(array($getid, $sessionid));
          }
          
       } elseif($gett == 2) {
-         $check_like = $bdd->prepare('SELECT id FROM dislikes WHERE id_article = ? AND id_membre = ?');
+         $check_like = $bdd->prepare('SELECT id FROM dislikes WHERE id_partner = ? AND id_user = ?');
          $check_like->execute(array($getid,$sessionid));
-         $del = $bdd->prepare('DELETE FROM likes WHERE id_article = ? AND id_membre = ?');
+         $del = $bdd->prepare('DELETE FROM likes WHERE id_partner = ? AND id_user = ?');
          $del->execute(array($getid,$sessionid));
          if($check_like->rowCount() == 1) {
-            $del = $bdd->prepare('DELETE FROM dislikes WHERE id_article = ? AND id_membre = ?');
+            $del = $bdd->prepare('DELETE FROM dislikes WHERE id_partner = ? AND id_user = ?');
             $del->execute(array($getid,$sessionid));
          } else {
-            $ins = $bdd->prepare('INSERT INTO dislikes (id_article, id_membre) VALUES (?, ?)');
+            $ins = $bdd->prepare('INSERT INTO dislikes (id_partner, id_user) VALUES (?, ?)');
             $ins->execute(array($getid, $sessionid));
          }
       }
-      //header('Location: http://localhost/P3_test/detailspartenaire1.php?id='.$sessionid. '&id_partners=' .$getid);
       header("Location: detailspartenaire1.php?id=".$_SESSION['id']."&id_partners=".$_GET['id']);
    } else {
       exit('Erreur. <a href="http://localhost/P3_test/connexion.php">Revenir à l\'accueil</a>');
@@ -54,5 +53,4 @@ if(isset($_GET['t'],$_GET['id']) AND !empty($_GET['t']) AND !empty($_GET['id']))
 } else {
    exit('Erreur. <a href="http://localhost/P3_test/connexion.php">Revenir à l\'accueil</a>');
 }
-
 ?>

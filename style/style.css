@@ -27,8 +27,8 @@ header h1
 section
 {
 	background-color: #F7F1EE;
-	margin: 50px 50px 50px 50px;
-	padding: 10px 17px 10px 10px;
+	margin: 50px 225px 50px 225px;
+	padding: 10px 10px 10px 10px;
 	box-shadow: 0px 0px 10px 3px #C1C1C1;
 }
 
@@ -57,60 +57,50 @@ section h3
 #form
 {
 	text-align: center;
-	padding-bottom: 10px;
 }
 
 #name
 {
-	width: 100%;
 	margin-bottom: 10px;
 }
 
 #firstname
 {
-	width: 100%;
 	margin-bottom: 10px;
 }
 
 #username
 {
-	width: 100%;
 	margin-bottom: 10px;
 }
 
 #password
 {
-	width: 100%;
 	margin-bottom: 10px;
 }
 
 #password2
 {
-	width: 100%;
 	margin-bottom: 10px;
 }
 
 #secret_question
 {
-	width: 100%;
 	margin-bottom: 10px;
 }
 
 #secret_answer
 {
-	width: 100%;
 	margin-bottom: 10px;
 }
 
 #usernameconnect
 {
-	width: 100%;
 	margin-bottom: 10px;
 }
 
 #passwordconnect
 {
-	width: 100%;
 	margin-bottom: 10px;
 }
 
@@ -155,54 +145,89 @@ footer a
 
 #newusername
 {
-	width: 100%;
 	margin-bottom: 10px;
 }
 
 #newpassword
 {
-	width: 100%;
 	margin-bottom: 10px;
 }
 
 #newpassword2
 {
-	width: 100%;
 	margin-bottom: 10px;
 }
 
 #newsecret_question
 {
-	width: 100%;
 	margin-bottom: 10px;
 }
 
 #newsecret_answer
 {
-	width: 100%;
 	margin-bottom: 10px;
 }
 
 #usernamepasschange
 {
-	width: 100%;
 	margin-bottom: 10px;
 }
 
 #secretanswerpasschange
 {
-	width: 100%;
 	margin-bottom: 10px;
 }
 
 #password1change
 {
-	width: 100%;
 	margin-bottom: 10px;
 }
 
 #password2change
 {
-	width: 100%;
 	margin-bottom: 10px;
+}
+
+@media all and (max-width: 812px)
+{
+	#bloc_page
+	{
+		width: auto;
+	}
+
+	section
+	{
+		background-color: #F7F1EE;
+		margin: 0px 0px 0px 0px;
+		padding: 10px 10px 10px 10px;
+		box-shadow: 0px 0px 10px 3px #C1C1C1;
+	}
+
+	header h1
+	{
+		font-size: 24px;
+		text-align: center;
+	}
+}
+
+@media all and (min-width: 813px) and (max-width: 1366px)
+{
+	#bloc_page
+	{
+		width: auto;
+	}
+
+	section
+	{
+		background-color: #F7F1EE;
+		margin: 0px 0px 0px 0px;
+		padding: 10px 10px 10px 10px;
+		box-shadow: 0px 0px 10px 3px #C1C1C1;
+	}
+
+	header h1
+	{
+		font-size: 24px;
+		text-align: center;
+	}
 }

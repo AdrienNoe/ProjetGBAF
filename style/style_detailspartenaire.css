@@ -19,6 +19,7 @@ img
 {
 	display: flex;
 	width: 142px;
+	border: 1px solid white;
 }
 
 li a
@@ -65,6 +66,8 @@ footer a
 section
 {
 	border-bottom: solid 1px black;
+	padding-bottom: 30px;
+	background-color: #F7F1EE;
 }
 
 #partner_section
@@ -117,7 +120,6 @@ section
 	padding-left: 100px;
 	padding-right: 100px;
 	padding-top: 10px;
-	padding-bottom: 30px;
 	border-top: solid 1px black;
 }
 
@@ -132,6 +134,7 @@ section
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	margin-bottom: 10px;
 }
 
 /* .title_comments:nth-child(1)
@@ -162,6 +165,7 @@ section
 	padding-bottom: 5px;
 	padding-left: 5px;
 	padding-right: 5px;
+	background-color: white;
 }
 
 .comments_form
@@ -185,4 +189,5 @@ section
 	padding-left: 20px;
 	height: 125px;
 	margin-bottom: 10px;
+	background-color: white;
 }

@@ -21,10 +21,10 @@ if(isset($_GET['id_partners']) AND !empty($_GET['id_partners']))
       $article = $article->fetch();
       $id = $article['id'];
       $name = $article['name'];
-      $likes = $bdd->prepare('SELECT id FROM likes WHERE id_article = ?');
+      $likes = $bdd->prepare('SELECT id FROM likes WHERE id_partner = ?');
       $likes->execute(array($id));
       $likes = $likes->rowCount();
-      $dislikes = $bdd->prepare('SELECT id FROM dislikes WHERE id_article = ?');
+      $dislikes = $bdd->prepare('SELECT id FROM dislikes WHERE id_partner = ?');
       $dislikes->execute(array($id));
       $dislikes = $dislikes->rowCount();
    } else
