@@ -50,10 +50,26 @@ if(isset($_GET['id_partners']) AND !empty($_GET['id_partners']))
         {
             $firstname = htmlspecialchars($_POST['firstname']);
             $comment = htmlspecialchars($_POST['comment']);
-            
-            $ins=$bdd->prepare('INSERT INTO comments (firstname, comment, id_partner, comment_date) VALUES (?,?,?,NOW())');
-            $ins->execute(array($firstname, $comment, $getid));
-            $c_msg = "Votre commentaire a bien été posté !";
+            $check_comment = $bdd->prepare('SELECT id FROM comments WHERE id_partner = ? AND firstname = ?');
+            $check_comment->execute(array($getid,$firstname));
+            $del = $bdd->prepare('DELETE FROM comments WHERE id_partner = ? AND firstname = ?');
+            $del->execute(array($getid,$firstname));
+            $commentexist = $check_comment->rowCount();
+
+            if($commentexist == 1)
+            {
+                $del = $bdd->prepare('DELETE FROM comments WHERE id_partner = ? AND firstname = ?');
+                $del->execute(array($getid,$firstname));
+                $ins=$bdd->prepare('INSERT INTO comments (firstname, comment, id_partner, comment_date) VALUES (?,?,?,NOW())');
+                $ins->execute(array($firstname, $comment, $getid));
+                $c_msg = "Votre commentaire a bien été posté !";
+            }
+            else
+            {
+                $ins=$bdd->prepare('INSERT INTO comments (firstname, comment, id_partner, comment_date) VALUES (?,?,?,NOW())');
+                $ins->execute(array($firstname, $comment, $getid));
+                $c_msg = "Votre commentaire a bien été posté !";
+            }
         }
         else
         {
@@ -113,22 +129,22 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 			</div>
 
 			<div id="comments_section">
-		    		<div class="title_comments">
-		    			<h2>Poster un commentaire</h2>
-		    		</div>
-		    		<div class="rating">
-		    			<div class="comments_form">
+				<div class="title_comments">
+		    		<h2>Poster un commentaire</h2>
+		    	</div>
+		    	<div class="rating">
+		   			<div class="comments_form">
 				        <form method="POST" action="#">
 				            <input type="text" name="firstname" placeholder="Votre prénom"><br />
 				            <textarea class="comment_area" name="comment" placeholder="Votre commentaire"></textarea><br />
 				            <input type="submit" value="Poster mon commentaire" name="submit_comment">
 				        </form>
 				    </div>
-				    	<div class="likes_dislikes">
-					    	<a href="action.php?t=1&id=<?= $id ?>">J'aime (<?= $likes ?>)</a><br />
-			   				<a href="action.php?t=2&id=<?= $id ?>">Je n'aime pas (<?= $dislikes ?>)</a>
-			   			</div>
-					</div>
+				    <div class="likes_dislikes">
+				    	<a href="action.php?t=1&id=<?= $id ?>">J'aime (<?= $likes ?>)</a><br />
+		   				<a href="action.php?t=2&id=<?= $id ?>">Je n'aime pas (<?= $dislikes ?>)</a>
+		   			</div>
+				</div>
 		        <?php 
 		            if(isset($c_msg))
 		            {

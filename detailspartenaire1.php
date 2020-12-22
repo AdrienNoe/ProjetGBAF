@@ -50,10 +50,26 @@ if(isset($_GET['id_partners']) AND !empty($_GET['id_partners']))
         {
             $firstname = htmlspecialchars($_POST['firstname']);
             $comment = htmlspecialchars($_POST['comment']);
-            
-            $ins=$bdd->prepare('INSERT INTO comments (firstname, comment, id_partner, comment_date) VALUES (?,?,?,NOW())');
-            $ins->execute(array($firstname, $comment, $getid));
-            $c_msg = "Votre commentaire a bien été posté !";
+            $check_comment = $bdd->prepare('SELECT id FROM comments WHERE id_partner = ? AND firstname = ?');
+            $check_comment->execute(array($getid,$firstname));
+            $del = $bdd->prepare('DELETE FROM comments WHERE id_partner = ? AND firstname = ?');
+            $del->execute(array($getid,$firstname));
+            $commentexist = $check_comment->rowCount();
+
+            if($commentexist == 1)
+            {
+                $del = $bdd->prepare('DELETE FROM comments WHERE id_partner = ? AND firstname = ?');
+                $del->execute(array($getid,$firstname));
+                $ins=$bdd->prepare('INSERT INTO comments (firstname, comment, id_partner, comment_date) VALUES (?,?,?,NOW())');
+                $ins->execute(array($firstname, $comment, $getid));
+                $c_msg = "Votre commentaire a bien été posté !";
+            }
+            else
+            {
+                $ins=$bdd->prepare('INSERT INTO comments (firstname, comment, id_partner, comment_date) VALUES (?,?,?,NOW())');
+                $ins->execute(array($firstname, $comment, $getid));
+                $c_msg = "Votre commentaire a bien été posté !";
+            }
         }
         else
         {
