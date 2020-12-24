@@ -13,15 +13,16 @@ catch(Exception $e)
 if(isset($_POST['formconnexion']))
 {
 	$usernameconnect = htmlspecialchars($_POST['usernameconnect']);
-	$passwordconnect = sha1($_POST['passwordconnect']);
+	$passwordconnect = $_POST['passwordconnect'];
+
 	if(!empty($usernameconnect) AND !empty($passwordconnect))
 	{
-		$requsername = $bdd->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
-		$requsername->execute(array($usernameconnect, $passwordconnect));
-		$usernameexist = $requsername->rowCount();
-		if($usernameexist == 1)
+		$requsername = $bdd->prepare("SELECT * FROM users WHERE username = ?");
+		$requsername->execute(array($usernameconnect));
+		$userinfo = $requsername->fetch();
+
+		if(password_verify($passwordconnect, $userinfo['password']))
 		{
-			$userinfo = $requsername->fetch();
 			$_SESSION['id'] = $userinfo['id'];
 			$_SESSION['username'] = $userinfo['username'];
 			header("Location: partenaires.php?id=".$_SESSION['id']);

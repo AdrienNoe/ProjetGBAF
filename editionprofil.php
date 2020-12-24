@@ -26,13 +26,14 @@ if(isset($_SESSION['id']))
 
 	if(isset($_POST['newpassword']) AND !empty($_POST['newpassword']) AND isset($_POST['newpassword2']) AND !empty($_POST['newpassword2']))
 	{
-		$password = sha1($_POST['newpassword']);
-		$password2 = sha1($_POST['newpassword2']);
+		$password = $_POST['newpassword'];
+		$password2 = $_POST['newpassword2'];
 
 		if($password == $password2)
 		{
+			$hashed_password = password_hash($_POST['newpassword'], PASSWORD_DEFAULT);
 			$insertpassword = $bdd->prepare("UPDATE users SET password = ? WHERE id = ?");
-			$insertpassword->execute(array($password, $_SESSION['id']));
+			$insertpassword->execute(array($hashed_password, $_SESSION['id']));
 			header('Location: profil.php?id='.$_SESSION['id']);
 		}
 		else
