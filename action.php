@@ -14,7 +14,7 @@ catch(Exception $e)
 if(isset($_GET['t'],$_GET['id']) AND !empty($_GET['t']) AND !empty($_GET['id']))
 {
    $getid = (int) $_GET['id'];
-   $gett = (int) $_GET['t'];
+   $getthumb = (int) $_GET['t'];
    $sessionid = $_SESSION['id'];
    $checksessionid = $bdd->prepare('SELECT id FROM users WHERE id = ?');
    $checksessionid->execute(array($sessionid));
@@ -22,7 +22,7 @@ if(isset($_GET['t'],$_GET['id']) AND !empty($_GET['t']) AND !empty($_GET['id']))
    $check->execute(array($getid));
    if($check->rowCount() == 1)
    {
-      if($gett == 1)
+      if($getthumb == 1)
       {
          $check_like = $bdd->prepare('SELECT id FROM likes WHERE id_partner = ? AND id_user = ?');
          $check_like->execute(array($getid,$sessionid));
@@ -40,7 +40,7 @@ if(isset($_GET['t'],$_GET['id']) AND !empty($_GET['t']) AND !empty($_GET['id']))
          }
          
       }
-      elseif($gett == 2)
+      elseif($getthumb == 2)
       {
          $check_like = $bdd->prepare('SELECT id FROM dislikes WHERE id_partner = ? AND id_user = ?');
          $check_like->execute(array($getid,$sessionid));

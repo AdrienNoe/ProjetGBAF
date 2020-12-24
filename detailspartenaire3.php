@@ -14,14 +14,14 @@ catch(Exception $e)
 if(isset($_GET['id_partners']) AND !empty($_GET['id_partners']))
 {
    $get_id = htmlspecialchars($_GET['id_partners']);
-   $article = $bdd->prepare('SELECT * FROM partners WHERE id = ?');
-   $article->execute(array($get_id));
-   if($article->rowCount() == 1)
+   $partner = $bdd->prepare('SELECT * FROM partners WHERE id = ?');
+   $partner->execute(array($get_id));
+   if($partner->rowCount() == 1)
    {
-      $article = $article->fetch();
-      $id = $article['id'];
-      $name = $article['name'];
-      $likes = $bdd->prepare('SELECT id FROM likes WHERE id_partner = ?');
+      $partner = $partner->fetch();
+      $id = $partner['id'];
+      $name = $partner['name'];
+      $likes = $bdd->prepare('SELECT id FROM likes WHERE id_partner = ?'); //prepare protège les injections SQL
       $likes->execute(array($id));
       $likes = $likes->rowCount();
       $dislikes = $bdd->prepare('SELECT id FROM dislikes WHERE id_partner = ?');
@@ -40,9 +40,9 @@ else
 if(isset($_GET['id_partners']) AND !empty($_GET['id_partners']))
 {
     $getid = htmlspecialchars($_GET['id_partners']);
-    $billet = $bdd->prepare('SELECT * FROM partners WHERE id = ?');
-    $billet->execute(array($getid));
-    $billet = $billet->fetch();
+    $partner = $bdd->prepare('SELECT * FROM partners WHERE id = ?');
+    $partner->execute(array($getid));
+    $partner = $partner->fetch();
 
     if(isset($_POST['submit_comment']))
     {
@@ -52,33 +52,33 @@ if(isset($_GET['id_partners']) AND !empty($_GET['id_partners']))
             $comment = htmlspecialchars($_POST['comment']);
             $check_comment = $bdd->prepare('SELECT id FROM comments WHERE id_partner = ? AND firstname = ?');
             $check_comment->execute(array($getid,$firstname));
-            $del = $bdd->prepare('DELETE FROM comments WHERE id_partner = ? AND firstname = ?');
-            $del->execute(array($getid,$firstname));
+            $delete = $bdd->prepare('DELETE FROM comments WHERE id_partner = ? AND firstname = ?');
+            $delete->execute(array($getid,$firstname));
             $commentexist = $check_comment->rowCount();
 
             if($commentexist == 1)
             {
-                $del = $bdd->prepare('DELETE FROM comments WHERE id_partner = ? AND firstname = ?');
-                $del->execute(array($getid,$firstname));
+                $delete = $bdd->prepare('DELETE FROM comments WHERE id_partner = ? AND firstname = ?');
+                $delete->execute(array($getid,$firstname));
                 $ins=$bdd->prepare('INSERT INTO comments (firstname, comment, id_partner, comment_date) VALUES (?,?,?,NOW())');
                 $ins->execute(array($firstname, $comment, $getid));
-                $c_msg = "Votre commentaire a bien été posté !";
+                $comment_message = "Votre commentaire a bien été posté !";
             }
             else
             {
                 $ins=$bdd->prepare('INSERT INTO comments (firstname, comment, id_partner, comment_date) VALUES (?,?,?,NOW())');
                 $ins->execute(array($firstname, $comment, $getid));
-                $c_msg = "Votre commentaire a bien été posté !";
+                $comment_message = "Votre commentaire a bien été posté !";
             }
         }
         else
         {
-            $c_msg = "Tous les champs doivent-être complétés !";
+            $comment_message = "Tous les champs doivent-être complétés !";
         }
     }
 
-    $commentaires = $bdd->prepare('SELECT * FROM comments WHERE id_partner = ? ORDER BY id DESC');
-    $commentaires->execute(array($getid));
+    $comments = $bdd->prepare('SELECT * FROM comments WHERE id_partner = ? ORDER BY id DESC');
+    $comments->execute(array($getid));
 
 if(isset($_GET['id']) AND $_GET['id'] > 0)
 {
@@ -149,20 +149,19 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 		   			</div>
 				</div>
 		        <?php 
-		            if(isset($c_msg))
+		            if(isset($comment_message))
 		            {
-		                echo $c_msg;
+		                echo $comment_message;
 		            }
 		        ?>
-		        <br />
 		        <?php
-		            while($c = $commentaires->fetch())
+		            while($comment = $comments->fetch())
 		            {
 		                ?>
 		                <div class="comments_list">
-		                    <p class="firstname"><b><?= $c['firstname'] ?></b></p>
-		                    <p class="comment_date">Posté le : <?= $c['comment_date'] ?></p>
-		                    <p class="comment"><?= $c['comment']; ?></p>
+		                    <p class="firstname"><b><?= $comment['firstname'] ?></b></p>
+		                    <p class="comment_date">Posté le : <?= $comment['comment_date'] ?></p>
+		                    <p class="comment"><?= $comment['comment']; ?></p>
 		                </div>
 		                <?php
 		            }
