@@ -141,8 +141,8 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 				        </form>
 				    </div>
 				    <div class="likes_dislikes">
-				    	<a href="action.php?t=1&id=<?= $id ?>">J'aime (<?= $likes ?>)</a><br />
-		   				<a href="action.php?t=2&id=<?= $id ?>">Je n'aime pas (<?= $dislikes ?>)</a>
+				    	<a href="avis.php?t=1&id=<?= $id ?>">J'aime (<?= $likes ?>)</a><br />
+		   				<a href="avis.php?t=2&id=<?= $id ?>">Je n'aime pas (<?= $dislikes ?>)</a>
 		   			</div>
 				</div>
 		        <?php 
