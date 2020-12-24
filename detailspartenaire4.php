@@ -120,7 +120,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 		</header>
 		<section>
 			<div id="partner_section">
-				<img src="images/CDE.png">
+				<img src="images/CDE.png" alt="logo CDE">
 				<h2>DSA France</h2>
 				<div class="details">
 					<p>La CDE (Chambre des Entrepreneurs) accompagne les entreprises dans leurs démarches de formation.<br />

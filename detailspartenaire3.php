@@ -120,7 +120,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 		</header>
 		<section>
 			<div id="partner_section">
-				<img src="images/Dsa_france.png">
+				<img src="images/Dsa_france.png" alt="logo DSA">
 				<h2>DSA France</h2>
 				<div class="details">
 					<p>DSA France accélère la croissance du territoire et s'engage avec les collectivités territoriales.

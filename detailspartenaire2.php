@@ -120,7 +120,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 		</header>
 		<section>
 			<div id="partner_section">
-				<img src="images/protectpeople.png">
+				<img src="images/protectpeople.png" alt="logo Protectpeople">
 				<h2>Protectpeople</h2>
 				<div class="details">
 					<p>Protectpeople finance la solidarité nationale.

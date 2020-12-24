@@ -120,7 +120,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 		</header>
 		<section>
 			<div id="partner_section">
-				<img src="images/formation_co.png">
+				<img src="images/formation_co.png" alt="logo Formation&co">
 				<h2>Formation&co</h2>
 				<div class="details">
 					<p>Formation&co est une association française présente sur tout le territoire.
